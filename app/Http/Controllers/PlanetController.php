@@ -73,12 +73,12 @@ class PlanetController extends Controller
 
                     $responseBody = json_decode($response->getBody());
 
-                    foreach ($responseBody->results as $person) {
+                    foreach ($responseBody->results as $planet) {
 
-                        $newPerson = Planet::insertOrIgnore([
-                            'name' => $person->name,
-                            'terrain' => $person->terrain,
-                            'population' => $person->population
+                        $newPlanet = Planet::insertOrIgnore([
+                            'name' => $planet->name,
+                            'terrain' => $planet->terrain,
+                            'population' => $planet->population
                         ]);
 
                     }
@@ -94,7 +94,7 @@ class PlanetController extends Controller
             }
 
         return response()->json([
-            'message' => 'La DB ha sido cargada correctamente con los datos de los personajes!',
+            'message' => 'La DB ha sido cargada correctamente con los datos de los planetas!',
             'data' => PlanetResource::collection(Planet::get())
         ], 200);
     
