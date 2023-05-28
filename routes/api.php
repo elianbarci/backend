@@ -14,7 +14,18 @@ use App\Models\Vehicle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/limiter', [StarWarsController::class, 'limiter']);
+Route::get('/', function () {
+    return response()->json([
+        'message' => 'Hola! Bienvenido a la API de Ask Vader donde vas a poder saber finalmente que opina el temible general Darth Vader sobre los diferentes personajes, planetas y vehiculos de la saga.',
+    ], 200);
+}); 
+
+
+Route::get('/limiter', function () {
+    return response()->json([
+        'message' => 'Este endpoint solo sirve para testear que luego de menos de 10 request en un minuto la IP es bloqueada temporalmente',
+    ], 200);
+}); 
 
 Route::group([
     'prefix' => 'auth'
