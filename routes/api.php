@@ -28,7 +28,7 @@ Route::group([
 
 Route::group([
     'prefix' => 'people',
-    'middleware' => ['auth:api']
+    // 'middleware' => ['auth:api']
 ], function ($router) { 
 
 
@@ -38,7 +38,7 @@ Route::group([
     
     Route::get('/opinion', [PeopleController::class, 'getCharacter']);
     
-    Route::get('/populate', [PeopleController::class, 'populate']);
+    Route::post('/populate', [PeopleController::class, 'populate']);
 
 
 });
@@ -55,7 +55,7 @@ Route::group([
     
     Route::get('/opinion', [PlanetController::class, 'getPlanet']);
     
-    Route::get('/populate', [PlanetController::class, 'populate']);
+    Route::post('/populate', [PlanetController::class, 'populate']);
 
 
 });
@@ -72,7 +72,7 @@ Route::group([
     
     Route::get('/opinion', [VehicleController::class, 'getVehicle']);
     
-    Route::get('/populate', [VehicleController::class, 'populate']);
+    Route::post('/populate', [VehicleController::class, 'populate']);
 
 
 });
