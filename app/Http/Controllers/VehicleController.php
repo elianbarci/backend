@@ -13,9 +13,10 @@ class VehicleController extends Controller
 
     use AskVaderTrait;
 
-    public function index()
-    {
-        //
+    public function index(){
+        return response()->json([
+            'message' => 'Estas en la seccion de vehiculos!',
+        ], 200);
     }
 
     public function getVehicle(Request $request)

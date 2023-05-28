@@ -14,14 +14,15 @@ class PeopleController extends Controller
 {
     use AskVaderTrait;
 
-    public function index()
-    {
-        //
+    public function index(){
+        return response()->json([
+            'message' => 'Estas en la seccion de personas!',
+        ], 200);
     }
 
     public function getCharacter(Request $request)
     {
-        
+
         $request->validate([
             'idCharacter' => 'required|string',
         ]);

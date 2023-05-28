@@ -31,6 +31,7 @@ Route::group([
     // 'middleware' => ['auth:api']
 ], function ($router) { 
 
+    Route::get('/', [PeopleController::class, 'index']);
 
     Route::get('/all', function () {
         return new PeopleCollection(People::paginate(20));
@@ -49,6 +50,8 @@ Route::group([
 ], function ($router) { 
 
 
+    Route::get('/', [PlanetController::class, 'index']);
+
     Route::get('/all', function () {
         return new PlanetCollection(Planet::paginate(20));
     }); 
@@ -65,6 +68,7 @@ Route::group([
     'middleware' => ['auth:api']
 ], function ($router) { 
 
+    Route::get('/', [VehicleController::class, 'index']);
 
     Route::get('/all', function () {
         return new VehicleCollection(Vehicle::paginate(20));

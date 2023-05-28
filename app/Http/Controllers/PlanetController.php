@@ -15,7 +15,9 @@ class PlanetController extends Controller
 
     public function index()
     {
-        //
+        return response()->json([
+            'message' => 'Estas en la seccion de planetas!',
+        ], 200);
     }
 
     public function getPlanet(Request $request){
