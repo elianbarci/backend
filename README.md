@@ -10,17 +10,21 @@ Postman API documentation: https://www.postman.com/galactic-turtles/workspace/pu
 
 
 
+## Aclaraciones
+
+En pos de que esto se trata de una prueba de concepto se saltearon varias medidas de seguridad, tales como que la MySQL y PhpMyAdmin se encuentran expuestos.
+
+
 ## Instalación
 
-Para iniciar el proyecto hay que clonar el repositorio y luego escribir los siguientes comandos:
+Para iniciar el proyecto hay que utilizar estos comandos:
 
 ```bash
   composer install
 ```
 
-```bash
-  php artisan passport:install
-```
+Genera las keys de passport para que los usuarios puedan autenticarse.
+
     
 ```bash
   php artisan passport:keys
@@ -28,6 +32,14 @@ Para iniciar el proyecto hay que clonar el repositorio y luego escribir los sigu
 
 ```bash
   php artisan migrate
+```
+
+```bash
+  php artisan passport:install
+```
+
+```bash
+  php artisan db:seed
 ```
 ## Rate Limiter
 
