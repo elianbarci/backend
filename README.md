@@ -12,9 +12,13 @@ Postman API documentation: https://www.postman.com/galactic-turtles/workspace/pu
 
 ## Aclaraciones
 
-En pos de que esto se trata de una prueba de concepto se saltearon varias medidas de seguridad, tales como que la MySQL y PhpMyAdmin se encuentran expuestos.
+En pos de que esto se trata de una prueba de concepto se saltearon varias medidas de seguridad, tales como que la base de datos MySQL y PhpMyAdmin se encuentran expuestos.
 
+No tiene SSL.
 
+El sitio esta hosteado en una VPS personal que tenía disponible.
+
+Si hay errores en los endpoints de OPINION es por los limites de la API de OpenAI. Como esto es una prueba de concepto no estoy usando el endpoint de chat de OpenAI sino que más bien estoy utilizando el de completition que utiliza menos tokens por cada request.
 ## Instalación
 
 Para iniciar el proyecto hay que utilizar estos comandos:
@@ -24,11 +28,6 @@ Para iniciar el proyecto hay que utilizar estos comandos:
 ```
 
 Genera las keys de passport para que los usuarios puedan autenticarse.
-
-    
-```bash
-  php artisan passport:keys
-```
 
 ```bash
   php artisan migrate
