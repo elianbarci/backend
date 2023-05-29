@@ -22,10 +22,10 @@ class PlanetTest extends TestCase
 
             $access_token = Auth::user()->createToken('authToken')->accessToken;
 
-            $response = $this->withHeaders([
-                'Accept' => 'application/json',
+            $response = $this->post('/api/planets/populate', [], [    
+                'Accept' => 'application/json' ,
                 'Authorization' => 'Bearer ' . $access_token
-            ])->call('POST', '/api/planets/populate');
+            ]);
 
             $response->assertStatus(200);
 
@@ -48,10 +48,10 @@ class PlanetTest extends TestCase
 
             $access_token = Auth::user()->createToken('authToken')->accessToken;
 
-            $response = $this->withHeaders([
-                'Accept' => 'application/json',
+            $response = $this->post('/api/planets/populate', [], [    
+                'Accept' => 'application/json' ,
                 'Authorization' => 'Bearer ' . $access_token
-            ])->call('POST', '/api/planets/populate');
+            ]);
 
             $response = $this->withHeaders([
                 'Accept' => 'application/json',

@@ -28,14 +28,14 @@ class PeopleTest extends TestCase
 
             $access_token = Auth::user()->createToken('authToken')->accessToken;
 
-            $response = $this->withHeaders([
-                'Accept' => 'application/json',
+            $response = $this->post('/api/people/populate', [], [    
+                'Accept' => 'application/json' ,
                 'Authorization' => 'Bearer ' . $access_token
-            ])->call('POST', '/api/people/populate');
-
-            $response->assertStatus(200);
+            ]);
           
             People::truncate();
+
+            $response->assertStatus(200);
 
         }
 
@@ -53,10 +53,10 @@ class PeopleTest extends TestCase
 
             $access_token = Auth::user()->createToken('authToken')->accessToken;
 
-            $response = $this->withHeaders([
-                'Accept' => 'application/json',
+            $response = $this->post('/api/people/populate', [], [    
+                'Accept' => 'application/json' ,
                 'Authorization' => 'Bearer ' . $access_token
-            ])->call('POST', '/api/people/populate');
+            ]);
 
             $response = $this->withHeaders([
                 'Accept' => 'application/json',

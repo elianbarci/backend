@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\User;
 use App\Models\Vehicle;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -13,19 +14,18 @@ class VehicleTest extends TestCase
     public function test_populate(): void
     {
 
-        $credentials = [
-            'email' => env('TEST_USER'),
-            'password' => env('TEST_PASS')
-        ];
+        //En este caso si se seedeo bien la DB el usuario utilizado para testing sería "Testing User"
+        //hay varias formas de hacer esto como por ejemplo buscar el usuario Testing por nombre o utilizar las creds
+        //que estan en .env.example
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::loginUsingId(1)) {
 
             $access_token = Auth::user()->createToken('authToken')->accessToken;
 
-            $response = $this->withHeaders([
-                'Accept' => 'application/json',
+            $response = $this->post('/api/vehicles/populate', [], [    
+                'Accept' => 'application/json' ,
                 'Authorization' => 'Bearer ' . $access_token
-            ])->call('POST', '/api/vehicles/populate');
+            ]);
 
             $response->assertStatus(200);
           
@@ -47,16 +47,16 @@ class VehicleTest extends TestCase
 
             $access_token = Auth::user()->createToken('authToken')->accessToken;
 
-            $response = $this->withHeaders([
-                'Accept' => 'application/json',
+            $response = $this->post('/api/vehicles/populate', [], [    
+                'Accept' => 'application/json' ,
                 'Authorization' => 'Bearer ' . $access_token
-            ])->call('POST', '/api/vehicles/populate');
+            ]);
 
             $response = $this->withHeaders([
                 'Accept' => 'application/json',
                 'Authorization' => 'Bearer ' . $access_token
             ])->call('GET', '/api/vehicles/opinion', [
-                'idCharacter' => "49"
+                'idVehicle' => "49"
             ]);
 
             Vehicle::truncate();
