@@ -73,6 +73,11 @@ class VehicleController extends Controller
 
                 $responseBody = json_decode($response->getBody());
 
+                if(!$responseBody){
+                    error_log("La respuesta esta vacia");
+                    break;
+                }
+
                 foreach ($responseBody->results as $vehicle) {
 
                     $newVehicle = Vehicle::insertOrIgnore([
@@ -82,6 +87,7 @@ class VehicleController extends Controller
                         'consumables' => $vehicle->consumables,
                         'crew' => $vehicle->crew
                     ]);
+
                 }
 
                 $apiUrl = "vehicles/?page=" . $page++;
